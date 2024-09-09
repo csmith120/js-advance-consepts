@@ -54,6 +54,13 @@ const person = {
 	},
 };
 
+const {name, age} = person;
+console.log(name)
+console.log(age)
+
 const fruits = ['apple', 'banana', 'cherry', 'date'];
+const [second, forth] = fruits
+
+console.log(fruits)
 
 console.groupEnd()
