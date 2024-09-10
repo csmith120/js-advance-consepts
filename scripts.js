@@ -59,8 +59,22 @@ console.log(name)
 console.log(age)
 
 const fruits = ['apple', 'banana', 'cherry', 'date'];
-const [second, forth] = fruits
+const [,second, ,fourth] = fruits
 
-console.log(fruits)
+console.log(second)
+console.log(fourth)
+
+console.groupEnd()
+
+console.group("exercie 3")
+
+async function fetchPosts() {
+	const url = 'https://jsonplaceholder.typicode.com/posts?_limit=10';
+
+	// Your async/await code here
+}
+
+// Call the function to fetch posts
+fetchPosts();
 
 console.groupEnd()
