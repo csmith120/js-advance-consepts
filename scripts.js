@@ -96,14 +96,19 @@ class Subject {
 
 	addObserver(observer) {
 		// TODO: Add observer to the list
+		this.observers.push(observer);
 	}
 
 	removeObserver(observer) {
 		// TODO: Remove observer from the list
+		this.observers = this.observers.filter(obs => obs !== observer);
 	}
 
 	notifyObservers(data) {
 		// TODO: Notify all observers with given data
+		for (const observer of this.observers) {
+			observer.update(data);
+		}
 	}
 
 	async fetchAndNotify() {
@@ -123,9 +128,23 @@ class Subject {
 class Observer {
 	update(data) {
 		// TODO: Handle the received data. If it's an error message, log it.
+		if (data.error) {
+			console.error(data.error)
+		} else {
+			const [firstPost] = data;
+			console.log('Title of first post:', firstPost.title);
+		}
 		// If it's the list of posts, destructure and log the title of the first post.
 	}
 }
 
 // TODO: Instantiate the Subject, add observers, and call the fetchAndNotify method
+const postService = new Subject();
+const observer1 = new Observer();
+const observer2 = new Observer();
+
+postService.addObserver(observer1);
+postService.addObserver(observer2);
+
+postService.fetchAndNotify();
 console.groupEnd();
